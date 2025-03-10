@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .buttons form {
+            display: inline;
+        }
+        .buttons button, .buttons a {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .buttons button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .buttons button:hover {
+            background-color: #c82333;
+        }
+        .buttons a {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .buttons a:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Product</h1>
+        <p>Are you sure you want to delete the product <strong>{{ product.name }}</strong>?</p>
+        <div class="buttons">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Yes, delete</button>
+            </form>
+            <a href="{% url 'product_list' %}">Cancel</a>
+        </div>
+    </div>
+</body>
+</html>
