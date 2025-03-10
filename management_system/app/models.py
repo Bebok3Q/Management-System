@@ -9,8 +9,8 @@ class Product(models.Model):
     stock = models.IntegerField()
     supplier = models.CharField(max_length=255)
 
-    def __str__(self):
-        return f"{self.name}"
+    # def __str__(self):
+    #     return f"{self.name}"
 
 class Supplier(models.Model):
     name = models.CharField(max_length=255)

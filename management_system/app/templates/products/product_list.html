@@ -1,0 +1,27 @@
+{% load render_table from django_tables2 %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Products</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    </head>
+    <body>
+        {% render_table table %}
+    </body>
+
+</html>
+
+<!-- <table>
+        <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>stock</th>
+        </tr>
+        {% for product in products %}
+            <tr>{{product.name}}</tr>
+            <tr>{{product.stock}}</tr>
+            <tr>{{product.price}}</tr>
+        {% endfor %}
+    </table> 
+    -->
