@@ -18,6 +18,7 @@ class Supplier(models.Model):
     contact = models.CharField()
     
 class Order(models.Model):
+    id = models.AutoField(primary_key=True)
     product = models.CharField(max_length=255)
     quantity = models.IntegerField()
     supplier = models.CharField(max_length=255)

@@ -14,7 +14,13 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
         }
         .container {
             background: #fff;
@@ -24,7 +30,7 @@
             text-align: center;
         }
         h1 {
-            margin-bottom: 20px;
+            text-align: center;
             color: #333;
         }
         ul {
@@ -86,31 +92,105 @@
         .delete-form input[type="submit"]:hover{
             background-color: #9c1616;
         }
+        .order-form {
+            margin-top: 20px;
+        }
+        .order-form input[type="number"] {
+            padding: 8px;
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .order-form input[type="submit"] {
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .order-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .delete_order-form{
+            margin-top: 10px;
+        }
+        .delete_order-form input[type="number"] {
+            padding: 8px;
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .delete_order-form input[type="submit"]{
+            padding: 8px 16px;
+            background-color: #c71c1c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px
+        }
+        .delete_order-form input[type="submit"]:hover{
+            background-color: #9c1616;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div>
         <h1>Welcome to the Homepage</h1>
-        <ul>
-            <li><a href="{% url 'product_list' %}">List Products</a></li>
-            <li><a href="{% url 'product_create' %}">Create Product</a></li>    
-        </ul>
-        <div class="edit-form">
-            <form action="{% url 'product_update' id=0 %}" method="get">
-                <label for="product_id">Edit Product by ID:</label>
-                <input type="number" id="product_id" name="id" min="1" required>
-                <input type="submit" value="Edit">
-            </form>
-        </div>
-        <div class="delete-form">
-            <form action="{% url 'product_delete' id=0 %}" method="get">
-                <label for="delete_product_id">Delete Product by ID:</label>
-                <input type="number" id="delete_product_id" name="id" min="1" required>
-                <input type="submit" value="Delete">
-            </form>
+        <div class="grid-container">
+            <div class="container">
+                <h2>Products</h2>
+                <ul>
+                    <li><a href="{% url 'product_list' %}">List Products</a></li>
+                    <li><a href="{% url 'product_create' %}">Create Product</a></li>    
+                </ul>
+                <div class="edit-form">
+                    <form action="{% url 'product_update' id=0 %}" method="get">
+                        <label for="product_id">Edit Product by ID:</label>
+                        <input type="number" id="product_id" name="id" min="1" required>
+                        <input type="submit" value="Edit">
+                    </form>
+                </div>
+                <div class="delete-form">
+                    <form action="{% url 'product_delete' id=0 %}" method="get">
+                        <label for="delete_product_id">Delete Product by ID:</label>
+                        <input type="number" id="delete_product_id" name="id" min="1" required>
+                        <input type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Orders</h2>
+                <ul>
+                    <li><a href="{% url 'order_list' %}">List Orders</a></li>
+                </ul>
+                <div class="order-form">
+                    <form action="{% url 'order_edit' id=0 %}" method="get">
+                        <label for="order_id">Edit Order by ID:</label>
+                        <input type="number" id="order_id" name="id" min="1" required>
+                        <input type="submit" value="Edit">
+                    </form>
+                </div>
+                <div class="delete_order-form">
+                    <form action="{% url 'order_delete' id=0 %}" method="get">
+                        <label for="delete_order_id">Delete Order by ID:</label>
+                        <input type="number" id="delete_order_id" name="id" min="1" required>
+                        <input type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Suppliers</h2>
+            </div>
+            <div class="container">
+                <h2>Inventory</h2>
+            </div>
         </div>
     </div>
-
     <script>
         document.querySelector('.edit-form form').addEventListener('submit', function(event) {
             const productId = document.getElementById('product_id').value;
@@ -120,6 +200,16 @@
         document.querySelector('.delete-form form').addEventListener('submit', function(event) {
         const productId = document.getElementById('delete_product_id').value;
         const actionUrl = "{% url 'product_delete' id=0 %}".replace("0", productId);
+        this.action = actionUrl;
+        });
+        document.querySelector('.order-form form').addEventListener('submit', function(event) {
+        const orderId = document.getElementById('order_id').value;
+        const actionUrl = "{% url 'order_edit' id=0 %}".replace("0", orderId);
+        this.action = actionUrl;
+        });
+        document.querySelector('.delete_order-form form').addEventListener('submit', function(event) {
+        const orderId = document.getElementById('delete_order_id').value;
+        const actionUrl = "{% url 'order_delete' id=0 %}".replace("0", orderId);
         this.action = actionUrl;
         });
     </script>

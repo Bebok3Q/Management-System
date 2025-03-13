@@ -1,0 +1,85 @@
+{% load render_table from django_tables2 %}
+<!DOCTYPE html>
+<html lang="'en">
+<head>
+    <meta charset="'UTF-8">
+    <meta name="'viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        table th {
+            background-color: #4287f5;
+            color: #fff;
+            font-weight: bold;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        .actions a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+        }
+        .actions a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .price-column {
+        font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of all Orders</h1>
+        {% render_table table %}
+        <a href="{% url 'home' %}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
