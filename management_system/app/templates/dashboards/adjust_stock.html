@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+
+{% block content %}
+    <h2>📦 Adjust Stock</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{% url 'dashboard' %}">⬅️ Back to Dashboard</a>
+{% endblock %}

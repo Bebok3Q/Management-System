@@ -29,6 +29,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+        .full-width{
+            grid-column: span 2;
+        }
         h1 {
             text-align: center;
             color: #333;
@@ -136,6 +139,14 @@
         .delete_order-form input[type="submit"]:hover{
             background-color: #9c1616;
         }
+        .low-stock {
+            background-color: red;
+            color: white;
+        }
+
+        .warning-stock {
+            background-color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -188,7 +199,16 @@
             </div>
             <div class="container">
                 <h2>Inventory</h2>
+                <ul>
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'adjust_stock' %}">Adjust Stock</a></li>
+                </ul>
             </div>
+            <div class="container full-width">
+                <h2>API Endpoints</h2>
+                <ul>
+                    <li><a href="/api/products/" target="_blank">Products API</a></li>
+                </ul>
         </div>
     </div>
     <script>

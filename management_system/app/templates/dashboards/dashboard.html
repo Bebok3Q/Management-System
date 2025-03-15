@@ -1,0 +1,23 @@
+{% block content %}
+    <h2>📊 Supply Chain Dashboard</h2>
+
+    {% if low_stock_items %}
+        <h3>⚠️ Low Stock Alerts</h3>
+        <table border="1">
+            <tr>
+                <th>Product</th>
+                <th>Stock Level</th>
+                <th>Threshold</th>
+            </tr>
+            {% for item in low_stock_items %}
+            <tr class="{% if item.stock_level == 0 %}low-stock{% else %}warning-stock{% endif %}">
+                <td>{{ item.product.product }}</td>
+                <td>{{ item.stock_level }}</td>
+                <td>{{ item.low_stock_threshold }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>✅ All products are sufficiently stocked.</p>
+    {% endif %}
+{% endblock %}
