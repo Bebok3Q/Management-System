@@ -122,10 +122,6 @@ streamlit==1.42.2
 sympy==1.13.1
 tdqm==0.0.1
 tenacity==9.0.0
-tensorboard==2.18.0
-tensorboard-data-server==0.7.2
-tensorflow==2.18.0
-tensorflow_intel==2.18.0
 termcolor==2.5.0
 tokenizers==0.21.0
 toml==0.10.2
