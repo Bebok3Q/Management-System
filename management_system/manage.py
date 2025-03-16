@@ -3,6 +3,8 @@
 import os
 import sys
 from config import utils
+from django.core.management.commands.runserver import Command as Runserver
+
 
 db = utils.load_db_config()
 
@@ -25,5 +27,6 @@ def main():
 
 
 if __name__ == '__main__':
-    port = os.environ.get("PORT", 10000)
+    Runserver.default_addr = '0.0.0.0'
+    Runserver.default_port = os.environ.get('PORT', 5000)
     main()

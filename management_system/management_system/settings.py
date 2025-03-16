@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["management-system.onrender.com", "127.0.0.1", "*"]
+DEBUG = False
+PORT = int(os.getenv("PORT", 5000))
+ALLOWED_HOSTS = ["management-system.onrender.com", "127.0.0.1", "*", "0.0.0.0"]
 
 
 # Application definition
